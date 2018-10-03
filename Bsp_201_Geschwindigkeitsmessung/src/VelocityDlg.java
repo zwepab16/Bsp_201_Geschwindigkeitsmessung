@@ -27,18 +27,62 @@ public class VelocityDlg extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridLayout(6, 2));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Datum: ");
+        getContentPane().add(jLabel2);
+
+        jTextField1.setText("08.10.2013");
+        getContentPane().add(jTextField1);
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Uhrzeit: ");
+        getContentPane().add(jLabel3);
+
+        jTextField2.setText("07:55");
+        getContentPane().add(jTextField2);
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("Kennzeichen: ");
+        getContentPane().add(jLabel4);
+
+        jTextField3.setText("GU-Raser");
+        getContentPane().add(jTextField3);
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("V-Gemessen: ");
+        getContentPane().add(jLabel5);
+
+        jTextField4.setText("123");
+        getContentPane().add(jTextField4);
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setText("V-Erlaubt: ");
+        getContentPane().add(jLabel6);
+
+        jTextField5.setText("80");
+        getContentPane().add(jTextField5);
+
+        jButton1.setText("Übernehmen");
+        getContentPane().add(jButton1);
+
+        jButton2.setText("Abbrechen");
+        getContentPane().add(jButton2);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -86,5 +130,17 @@ public class VelocityDlg extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }
