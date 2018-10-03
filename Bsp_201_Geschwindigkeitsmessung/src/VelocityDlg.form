@@ -31,7 +31,7 @@
         <Property name="text" type="java.lang.String" value="Datum: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="tfDatum">
       <Properties>
         <Property name="text" type="java.lang.String" value="08.10.2013"/>
       </Properties>
@@ -42,7 +42,7 @@
         <Property name="text" type="java.lang.String" value="Uhrzeit: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="tfUhrzeit">
       <Properties>
         <Property name="text" type="java.lang.String" value="07:55"/>
       </Properties>
@@ -53,7 +53,7 @@
         <Property name="text" type="java.lang.String" value="Kennzeichen: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="tfKennzeichen">
       <Properties>
         <Property name="text" type="java.lang.String" value="GU-Raser"/>
       </Properties>
@@ -64,7 +64,7 @@
         <Property name="text" type="java.lang.String" value="V-Gemessen: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField4">
+    <Component class="javax.swing.JTextField" name="tfGemessen">
       <Properties>
         <Property name="text" type="java.lang.String" value="123"/>
       </Properties>
@@ -75,20 +75,26 @@
         <Property name="text" type="java.lang.String" value="V-Erlaubt: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField5">
+    <Component class="javax.swing.JTextField" name="tfErlaubt">
       <Properties>
         <Property name="text" type="java.lang.String" value="80"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="bt&#xdc;bernehmen">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xdc;bernehmen"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt&#xdc;bernehmenActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btAbbrechen">
       <Properties>
         <Property name="text" type="java.lang.String" value="Abbrechen"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAbbrechenActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
