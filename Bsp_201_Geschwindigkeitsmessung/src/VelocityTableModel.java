@@ -31,10 +31,16 @@ public String getColumnName(int c){
         list.add(m);
         fireTableRowsInserted(0, 0);
     }
-    public void remove(int zeile){
-        System.out.println(zeile);
-        list.remove(zeile);
-        fireTableRowsDeleted(0,0);
+    public void löschen(int[] zeile){
+       int count=0;
+        for (int i : zeile) {
+            
+            list.remove(i-count);
+            count++;
+            
+        }
+        
+        fireTableDataChanged();
     }
 
 }

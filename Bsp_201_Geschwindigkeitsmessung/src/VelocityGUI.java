@@ -130,8 +130,12 @@ VelocityTableModel model=new VelocityTableModel();
     }//GEN-LAST:event_btAddActionPerformed
 
     private void miLöschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miLöschenActionPerformed
- int zeile=  table.getSelectedRow();
-        model.remove(zeile);
+ try{
+        int[] zeile=  table.getSelectedRows();
+        model.löschen(zeile);
+ }catch(Exception ex){
+     System.out.println("Fehler beim Löschen!");
+ }
     }//GEN-LAST:event_miLöschenActionPerformed
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
