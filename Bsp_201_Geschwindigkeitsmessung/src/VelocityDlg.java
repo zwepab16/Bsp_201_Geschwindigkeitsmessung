@@ -1,10 +1,14 @@
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import javax.swing.JOptionPane;
 
 
 public class VelocityDlg extends javax.swing.JDialog {
  private Measurement m;
   private  Boolean ok=false;
+  private final DateTimeFormatter df=DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
     
     public VelocityDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -13,6 +17,9 @@ public class VelocityDlg extends javax.swing.JDialog {
      
     public boolean isOk(){
         return ok;
+    }
+    public Measurement getMeasurement(){
+        return m;
     }
 
     
@@ -93,14 +100,15 @@ public class VelocityDlg extends javax.swing.JDialog {
     private void btÜbernehmenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btÜbernehmenActionPerformed
     
         try{
-            String strDatum=tfDatum.getText()+tfUhrzeit.getText();
+            String strDatum=tfDatum.getText()+" "+tfUhrzeit.getText();
             
-        m=new Measurement(LocalDateTime.MAX, tfKennzeichen.getText(),Integer.parseInt( tfGemessen.getText()),Integer.parseInt(tfErlaubt.getText()) );
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-            System.out.println("Fehler im erstellen");
-        }
+        m=new Measurement(LocalDateTime.parse(strDatum, df), tfKennzeichen.getText(),Integer.parseInt( tfGemessen.getText()),Integer.parseInt(tfErlaubt.getText()) );
+        
         ok=true;
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(this,"Bitte alle Eingabefelder richig ausfüllen!");
+        }
       this.dispose();
     }//GEN-LAST:event_btÜbernehmenActionPerformed
 

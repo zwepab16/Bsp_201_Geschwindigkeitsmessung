@@ -30,4 +30,12 @@ private int gemessen,erlaubt;
         this.gemessen = gemessen;
         this.erlaubt = erlaubt;
     }
+    public int getÜbertretung(){
+      if(erlaubt>gemessen){
+          return 0;
+      }
+      else{
+          return gemessen-erlaubt;
+      }
+    }
 }

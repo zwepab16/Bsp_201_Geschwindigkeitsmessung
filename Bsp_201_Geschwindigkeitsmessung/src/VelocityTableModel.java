@@ -1,23 +1,40 @@
 
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 
 
 public class VelocityTableModel extends AbstractTableModel{
+private ArrayList<Measurement> list=new ArrayList();
+private static final String[] spalten={"Datum","Uhrzeit","Kennzeichen","Gemessen","Erlaubt","Übertretung"};
 
-    @Override
+public String getColumnName(int c){
+    return spalten[c];
+}   
+
+@Override
     public int getRowCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return list.size();
     }
 
     @Override
     public int getColumnCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return 6;
     }
 
     @Override
     public Object getValueAt(int i, int i1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Measurement m=list.get(i);
+        return m;
+    }
+    public void add(Measurement m){
+        list.add(m);
+        fireTableRowsInserted(0, 0);
+    }
+    public void remove(int zeile){
+        System.out.println(zeile);
+        list.remove(zeile);
+        fireTableRowsDeleted(0,0);
     }
 
 }

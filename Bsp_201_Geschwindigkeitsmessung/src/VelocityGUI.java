@@ -1,10 +1,16 @@
 
+import javax.swing.JFrame;
+
+
 public class VelocityGUI extends javax.swing.JFrame {
 VelocityTableModel model=new VelocityTableModel();
   
     public VelocityGUI() {
         initComponents();
-       // table.setModel(model);
+       
+      table.setModel(model);
+       
+        table.setDefaultRenderer(Object.class, new VelocityTableRenderer());
     }
 
    
@@ -13,23 +19,41 @@ VelocityTableModel model=new VelocityTableModel();
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        miAdd = new javax.swing.JMenuItem();
+        miLöschen = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        miDurchschnitt = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        btAdd = new javax.swing.JMenuItem();
 
-        jMenu2.setText("jMenu2");
+        miAdd.setText("Hinzufügen");
+        miAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miAddActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(miAdd);
 
-        jMenuItem1.setText("jMenuItem1");
-        jMenu2.add(jMenuItem1);
+        miLöschen.setText("Löschen");
+        miLöschen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miLöschenActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(miLöschen);
+        jPopupMenu1.add(jSeparator1);
 
-        jPopupMenu1.add(jMenu2);
+        miDurchschnitt.setText("Durchschnitt");
+        jPopupMenu1.add(miDurchschnitt);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Geschwindigkeitsmessungen");
+
+        jScrollPane1.setComponentPopupMenu(jPopupMenu1);
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -43,12 +67,26 @@ VelocityTableModel model=new VelocityTableModel();
             }
         ));
         table.setComponentPopupMenu(jPopupMenu1);
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel1.setText("Messungen");
 
         jMenu1.setText("Datei");
+
+        btAdd.setText("Add");
+        btAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btAdd);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -73,6 +111,33 @@ VelocityTableModel model=new VelocityTableModel();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void miAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAddActionPerformed
+  JFrame frame = new JFrame();
+        VelocityDlg dialog = new VelocityDlg(frame, true);
+        dialog.setVisible(true);
+        if(dialog.isOk()){
+            model.add(dialog.getMeasurement());
+        }
+    }//GEN-LAST:event_miAddActionPerformed
+
+    private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
+       JFrame frame = new JFrame();
+        VelocityDlg dialog = new VelocityDlg(frame, true);
+        dialog.setVisible(true);
+        if(dialog.isOk()){
+            model.add(dialog.getMeasurement());
+        }
+    }//GEN-LAST:event_btAddActionPerformed
+
+    private void miLöschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miLöschenActionPerformed
+ int zeile=  table.getSelectedRow();
+        model.remove(zeile);
+    }//GEN-LAST:event_miLöschenActionPerformed
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+      
+    }//GEN-LAST:event_tableMouseClicked
+
    
     public static void main(String args[]) {
         
@@ -84,13 +149,16 @@ VelocityTableModel model=new VelocityTableModel();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btAdd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenuItem miAdd;
+    private javax.swing.JMenuItem miDurchschnitt;
+    private javax.swing.JMenuItem miLöschen;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
