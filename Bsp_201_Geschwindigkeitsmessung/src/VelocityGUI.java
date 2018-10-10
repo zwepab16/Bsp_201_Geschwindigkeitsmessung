@@ -1,5 +1,7 @@
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import jdk.nashorn.internal.scripts.JO;
 
 
 public class VelocityGUI extends javax.swing.JFrame {
@@ -28,7 +30,8 @@ VelocityTableModel model=new VelocityTableModel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        btAdd = new javax.swing.JMenuItem();
+        btSave = new javax.swing.JMenuItem();
+        btLaden = new javax.swing.JMenuItem();
 
         miAdd.setText("Hinzufügen");
         miAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -79,13 +82,21 @@ VelocityTableModel model=new VelocityTableModel();
 
         jMenu1.setText("Datei");
 
-        btAdd.setText("Add");
-        btAdd.addActionListener(new java.awt.event.ActionListener() {
+        btSave.setText("Speichern");
+        btSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAddActionPerformed(evt);
+                btSaveActionPerformed(evt);
             }
         });
-        jMenu1.add(btAdd);
+        jMenu1.add(btSave);
+
+        btLaden.setText("Laden");
+        btLaden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLadenActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btLaden);
 
         jMenuBar1.add(jMenu1);
 
@@ -120,14 +131,13 @@ VelocityTableModel model=new VelocityTableModel();
         }
     }//GEN-LAST:event_miAddActionPerformed
 
-    private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
-       JFrame frame = new JFrame();
-        VelocityDlg dialog = new VelocityDlg(frame, true);
-        dialog.setVisible(true);
-        if(dialog.isOk()){
-            model.add(dialog.getMeasurement());
-        }
-    }//GEN-LAST:event_btAddActionPerformed
+    private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
+        try{
+        model.save();
+     }catch(Exception ex){
+         JOptionPane.showMessageDialog(null,"Beim Speichern wurden Fehler gemacht.");
+     }
+    }//GEN-LAST:event_btSaveActionPerformed
 
     private void miLöschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miLöschenActionPerformed
  try{
@@ -142,6 +152,14 @@ VelocityTableModel model=new VelocityTableModel();
       
     }//GEN-LAST:event_tableMouseClicked
 
+    private void btLadenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLadenActionPerformed
+     try{
+        model.load();
+     }catch(Exception ex){
+         JOptionPane.showMessageDialog(null,"Beim Laden wurden Fehler gemacht.");
+     }
+    }//GEN-LAST:event_btLadenActionPerformed
+
    
     public static void main(String args[]) {
         
@@ -153,7 +171,8 @@ VelocityTableModel model=new VelocityTableModel();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem btAdd;
+    private javax.swing.JMenuItem btLaden;
+    private javax.swing.JMenuItem btSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;

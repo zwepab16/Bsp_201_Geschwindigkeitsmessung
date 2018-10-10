@@ -1,5 +1,14 @@
 
+import java.awt.HeadlessException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.AbstractTableModel;
 
 
@@ -42,5 +51,48 @@ public String getColumnName(int c){
         
         fireTableDataChanged();
     }
+ public void save()throws Exception{
+        try {
+            JFileChooser chooser = new JFileChooser();
+            chooser.setFileFilter(new FileNameExtensionFilter("*.ser","ser"));
+         
+            File file = null;
+            int result = chooser.showSaveDialog(null);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                file = chooser.getSelectedFile();
+            }
 
+            FileOutputStream fos = new FileOutputStream(file.getAbsolutePath());
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            
+            oos.writeObject(list);
+            oos.flush();
+            fos.close();
+            
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public void load() throws Exception{
+        list.removeAll(list);
+        try {
+            JFileChooser chooser = new JFileChooser();
+            chooser.setFileFilter(new FileNameExtensionFilter("*.ser","ser"));
+            File file = null;
+            int result = chooser.showOpenDialog(null);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                file = chooser.getSelectedFile();
+            }
+            FileInputStream fis = new FileInputStream(file.getAbsolutePath());
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            list = (ArrayList<Measurement>) ois.readObject();
+            
+            fis.close();
+            fireTableDataChanged();
+        } catch (Exception e) {
+            throw e;
+        }
+        
+    }
 }

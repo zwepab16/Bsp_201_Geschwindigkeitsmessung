@@ -1,9 +1,10 @@
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
 
-public class Measurement {
+public class Measurement implements Serializable{
 private LocalDateTime datum;
 private String kennzeichen;
 private int gemessen,erlaubt;
