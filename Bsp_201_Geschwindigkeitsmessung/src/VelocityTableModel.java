@@ -94,5 +94,13 @@ public String getColumnName(int c){
             throw e;
         }
         
+        
     }
+    public double getDurchschnitt(){
+        double durchschnitt=0;
+            for (Measurement measurement : list) {
+            durchschnitt+=measurement.getÜbertretung();
+        }
+            return durchschnitt/list.size();
+        }
 }

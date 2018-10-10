@@ -51,6 +51,11 @@ VelocityTableModel model=new VelocityTableModel();
         jPopupMenu1.add(jSeparator1);
 
         miDurchschnitt.setText("Durchschnitt");
+        miDurchschnitt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miDurchschnittActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(miDurchschnitt);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -159,6 +164,10 @@ VelocityTableModel model=new VelocityTableModel();
          JOptionPane.showMessageDialog(null,"Beim Laden wurden Fehler gemacht.");
      }
     }//GEN-LAST:event_btLadenActionPerformed
+
+    private void miDurchschnittActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDurchschnittActionPerformed
+    JOptionPane.showMessageDialog(null,String.format("%s %.2f","Durchschnittliche Übertretung: ",model.getDurchschnitt()));
+    }//GEN-LAST:event_miDurchschnittActionPerformed
 
    
     public static void main(String args[]) {
