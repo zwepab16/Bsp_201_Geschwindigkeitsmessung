@@ -4,25 +4,25 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import javax.swing.JOptionPane;
 
-
 public class VelocityDlg extends javax.swing.JDialog {
- private Measurement m;
-  private  Boolean ok=false;
-  private final DateTimeFormatter df=DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
-    
+
+    private Measurement m;
+    private Boolean ok = false;
+    private final DateTimeFormatter df = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+
     public VelocityDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
-     
-    public boolean isOk(){
+
+    public boolean isOk() {
         return ok;
     }
-    public Measurement getMeasurement(){
+
+    public Measurement getMeasurement() {
         return m;
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -98,31 +98,27 @@ public class VelocityDlg extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btÜbernehmenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btÜbernehmenActionPerformed
-    
-        try{
-            String strDatum=tfDatum.getText()+" "+tfUhrzeit.getText();
-            
-        m=new Measurement(LocalDateTime.parse(strDatum, df), tfKennzeichen.getText(),Integer.parseInt( tfGemessen.getText()),Integer.parseInt(tfErlaubt.getText()) );
-        
-        ok=true;
+
+        try {
+            String strDatum = tfDatum.getText() + " " + tfUhrzeit.getText();
+
+            m = new Measurement(LocalDateTime.parse(strDatum, df), tfKennzeichen.getText(), Integer.parseInt(tfGemessen.getText()), Integer.parseInt(tfErlaubt.getText()));
+
+            ok = true;
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Bitte alle Eingabefelder richig ausfüllen!");
         }
-        catch(Exception ex){
-            JOptionPane.showMessageDialog(this,"Bitte alle Eingabefelder richig ausfüllen!");
-        }
-      this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btÜbernehmenActionPerformed
 
     private void btAbbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAbbrechenActionPerformed
-      
-        
-        
-        ok=false;
-      this.dispose();
+
+        ok = false;
+        this.dispose();
     }//GEN-LAST:event_btAbbrechenActionPerformed
 
-   
     public static void main(String args[]) {
-       
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 VelocityDlg dialog = new VelocityDlg(new javax.swing.JFrame(), true);

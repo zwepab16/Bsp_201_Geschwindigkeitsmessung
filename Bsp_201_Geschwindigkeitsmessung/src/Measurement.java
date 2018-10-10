@@ -2,12 +2,11 @@
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+public class Measurement implements Serializable {
 
-
-public class Measurement implements Serializable{
-private LocalDateTime datum;
-private String kennzeichen;
-private int gemessen,erlaubt;
+    private LocalDateTime datum;
+    private String kennzeichen;
+    private int gemessen, erlaubt;
 
     public LocalDateTime getDatum() {
         return datum;
@@ -31,12 +30,12 @@ private int gemessen,erlaubt;
         this.gemessen = gemessen;
         this.erlaubt = erlaubt;
     }
-    public int getÜbertretung(){
-      if(erlaubt>gemessen){
-          return 0;
-      }
-      else{
-          return gemessen-erlaubt;
-      }
+
+    public int getÜbertretung() {
+        if (erlaubt > gemessen) {
+            return 0;
+        } else {
+            return gemessen - erlaubt;
+        }
     }
 }

@@ -3,19 +3,18 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import jdk.nashorn.internal.scripts.JO;
 
-
 public class VelocityGUI extends javax.swing.JFrame {
-VelocityTableModel model=new VelocityTableModel();
-  
+
+    VelocityTableModel model = new VelocityTableModel();
+
     public VelocityGUI() {
         initComponents();
-       
-      table.setModel(model);
-       
+
+        table.setModel(model);
+
         table.setDefaultRenderer(Object.class, new VelocityTableRenderer());
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -128,50 +127,52 @@ VelocityTableModel model=new VelocityTableModel();
     }// </editor-fold>//GEN-END:initComponents
 
     private void miAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAddActionPerformed
-  JFrame frame = new JFrame();
+        JFrame frame = new JFrame();
         VelocityDlg dialog = new VelocityDlg(frame, true);
         dialog.setVisible(true);
-        if(dialog.isOk()){
+        if (dialog.isOk()) {
             model.add(dialog.getMeasurement());
         }
     }//GEN-LAST:event_miAddActionPerformed
 
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
-        try{
-        model.save();
-     }catch(Exception ex){
-         JOptionPane.showMessageDialog(null,"Beim Speichern wurden Fehler gemacht.");
-     }
+        try {
+            model.save();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Beim Speichern wurden Fehler gemacht.");
+        }
     }//GEN-LAST:event_btSaveActionPerformed
 
     private void miLöschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miLöschenActionPerformed
- try{
-        int[] zeile=  table.getSelectedRows();
-        model.löschen(zeile);
- }catch(Exception ex){
-     System.out.println("Fehler beim Löschen!");
- }
+        try {
+            int[] zeile = table.getSelectedRows();
+            model.löschen(zeile);
+        } catch (Exception ex) {
+            System.out.println("Fehler beim Löschen!");
+        }
     }//GEN-LAST:event_miLöschenActionPerformed
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
-      
+
     }//GEN-LAST:event_tableMouseClicked
 
     private void btLadenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLadenActionPerformed
-     try{
-        model.load();
-     }catch(Exception ex){
-         JOptionPane.showMessageDialog(null,"Beim Laden wurden Fehler gemacht.");
-     }
+        try {
+            model.load();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Beim Laden wurden Fehler gemacht.");
+        }
     }//GEN-LAST:event_btLadenActionPerformed
 
     private void miDurchschnittActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDurchschnittActionPerformed
-    JOptionPane.showMessageDialog(null,String.format("%s %.2f","Durchschnittliche Übertretung: ",model.getDurchschnitt()));
+
+        JOptionPane.showMessageDialog(null, String.format("%s %.2f", "Durchschnittliche Übertretung: ", model.getDurchschnitt()));
+
+
     }//GEN-LAST:event_miDurchschnittActionPerformed
 
-   
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VelocityGUI().setVisible(true);
